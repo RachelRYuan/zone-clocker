@@ -2,8 +2,16 @@ import { getDb } from "../../db.js";
 
 // Add employee
 export const addEmployee = async (req, res) => {
-  const { name, id_number, birthday, email, zone, is_active, mobile_number, id_zone } =
-    req.body;
+  const {
+    name,
+    id_number,
+    birthday,
+    email,
+    zone,
+    is_active,
+    mobile_number,
+    id_zone,
+  } = req.body;
   let connection;
 
   // Validate the name length
@@ -54,9 +62,10 @@ export const getEmployees = async (req, res) => {
     // This info is from the admin that is logged in that comes from the token
     const { id_company } = adminInfo;
 
-    const [data] = await connection.query("SELECT * FROM employee WHERE id_company = ?", [
-      id_company,
-    ]);
+    const [data] = await connection.query(
+      "SELECT * FROM employee WHERE id_company = ?",
+      [id_company]
+    );
 
     return res.status(200).json(data);
   } catch (err) {
@@ -74,8 +83,16 @@ export const updateEmployee = async (req, res) => {
   let connection;
 
   const { id: id_employee } = req.params;
-  const { name, id_number, birthday, email, zone, is_active, mobile_number, id_zone } =
-    req.body;
+  const {
+    name,
+    id_number,
+    birthday,
+    email,
+    zone,
+    is_active,
+    mobile_number,
+    id_zone,
+  } = req.body;
 
   try {
     connection = await getDb();
@@ -117,7 +134,9 @@ export const deleteEmployee = async (req, res) => {
     const { id: id_employee } = req.params;
 
     // Delete the zone data
-    await connection.query(`DELETE FROM employee WHERE id_employee = ?`, [id_employee]);
+    await connection.query(`DELETE FROM employee WHERE id_employee = ?`, [
+      id_employee,
+    ]);
 
     return res.status(200).json({ message: "Employee deleted successfully" });
   } catch (err) {
@@ -137,9 +156,13 @@ export const updateZoneForEmployees = async (req, res) => {
     const { id_zone } = req.body;
     connection = await getDb();
 
-    await connection.query(`UPDATE employee SET zone = '' WHERE id_zone = ?`, [id_zone]);
+    await connection.query(`UPDATE employee SET zone = '' WHERE id_zone = ?`, [
+      id_zone,
+    ]);
 
-    return res.status(200).json({ message: "Zone updated for employees successfully" });
+    return res
+      .status(200)
+      .json({ message: "Zone updated for employees successfully" });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Internal Server Error" });

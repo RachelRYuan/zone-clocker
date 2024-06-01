@@ -48,9 +48,10 @@ export const getAccounts = async (req, res) => {
     // This info is from the admin that is logged in that comes from the token
     const { id_company } = adminInfo;
 
-    const [data] = await connection.query("SELECT * FROM admin WHERE id_company = ?", [
-      id_company,
-    ]);
+    const [data] = await connection.query(
+      "SELECT * FROM admin WHERE id_company = ?",
+      [id_company]
+    );
 
     return res.status(200).json(data);
   } catch (err) {

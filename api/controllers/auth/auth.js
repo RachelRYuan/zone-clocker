@@ -19,7 +19,11 @@ export const registerAdminAndCompany = async (req, res) => {
     const { company_email, company_name, name, email, password } = req.body;
 
     // Create a new company
-    const id_company = await createCompany(connection, company_email, company_name);
+    const id_company = await createCompany(
+      connection,
+      company_email,
+      company_name
+    );
 
     // Check if admin email already exists
     const existingAdmins = await findAdminByEmailCreateAdmin(connection, email);
@@ -33,7 +37,13 @@ export const registerAdminAndCompany = async (req, res) => {
     const hashedPassword = await generateHashedPassword(password);
 
     // Create a new admin linked to the company
-    await createAdminLinkedToCompany(connection, name, email, hashedPassword, id_company);
+    await createAdminLinkedToCompany(
+      connection,
+      name,
+      email,
+      hashedPassword,
+      id_company
+    );
 
     await connection.commit();
     res.status(201).json({ message: "Admin and Company created successfully" });
@@ -56,11 +66,16 @@ export const login = async (req, res) => {
     // Search for admin with the provided email
     const adminData = await findAdminByEmailLogin(req.body.email);
 
-    if (adminData.length === 0) return res.status(404).json({ error: "User not found" });
+    if (adminData.length === 0)
+      return res.status(404).json({ error: "User not found" });
 
     // Validate the provided password
-    const isValidPassword = verifyPassword(req.body.password, adminData[0].password);
-    if (!isValidPassword) return res.status(400).json("Wrong password or email");
+    const isValidPassword = verifyPassword(
+      req.body.password,
+      adminData[0].password
+    );
+    if (!isValidPassword)
+      return res.status(400).json("Wrong password or email");
 
     // Generate an authentication token
     const token = generateToken(adminData[0].id_admin, "admin");
@@ -68,7 +83,11 @@ export const login = async (req, res) => {
 
     // Add the token inside a cookie
     res
-      .cookie("accessToken", token, { httpOnly: true, secure: true, sameSite: "none" })
+      .cookie("accessToken", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      })
       .status(200)
       .json(userInfo);
   } catch (err) {

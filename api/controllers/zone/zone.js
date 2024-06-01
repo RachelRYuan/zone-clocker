@@ -43,9 +43,10 @@ export const getZones = async (req, res) => {
     // This info is from the admin that is logged in that comes from the token
     const { id_company } = adminInfo;
 
-    const [data] = await connection.query("SELECT * FROM zone WHERE id_company = ?", [
-      id_company,
-    ]);
+    const [data] = await connection.query(
+      "SELECT * FROM zone WHERE id_company = ?",
+      [id_company]
+    );
 
     return res.status(200).json(data);
   } catch (err) {
@@ -101,7 +102,9 @@ export const getZoneById = async (req, res) => {
     const zone_id = req.params.id;
 
     if (zone_id === null || zone_id === undefined) {
-      return res.status(200).json({ message: "Continue with no zone_id was provided" });
+      return res
+        .status(200)
+        .json({ message: "Continue with no zone_id was provided" });
     }
 
     const [data] = await connection.query(

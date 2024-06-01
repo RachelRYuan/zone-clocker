@@ -8,7 +8,8 @@ export const login = async (req, res) => {
     // Search for admin with the provided email
     const adminData = await findAdminByEmail(req.body.email);
 
-    if (adminData.length === 0) return res.status(404).json({ error: "User not found" });
+    if (adminData.length === 0)
+      return res.status(404).json({ error: "User not found" });
 
     // Generate an authentication token
     const token = generateToken(adminData[0].id_admin);
@@ -16,7 +17,11 @@ export const login = async (req, res) => {
 
     // Add the token inside a cookie
     res
-      .cookie("accessToken", token, { httpOnly: true, secure: true, sameSite: "none" })
+      .cookie("accessToken", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      })
       .status(200)
       .json(userInfo);
   } catch (err) {

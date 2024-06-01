@@ -36,7 +36,10 @@ export const createAdminLinkedToCompany = async (
 export const findAdminByEmailLogin = async (email) => {
   const connection = await getDb();
   try {
-    const [data] = await connection.query("SELECT * FROM admin WHERE email = ?", [email]);
+    const [data] = await connection.query(
+      "SELECT * FROM admin WHERE email = ?",
+      [email]
+    );
     return data;
   } catch (err) {
     console.error("Error while finding admin by email:", err);
@@ -48,7 +51,10 @@ export const findAdminByEmailLogin = async (email) => {
 
 export const findAdminByEmailCreateAdmin = async (connection, email) => {
   try {
-    const [data] = await connection.query("SELECT * FROM admin WHERE email = ?", [email]);
+    const [data] = await connection.query(
+      "SELECT * FROM admin WHERE email = ?",
+      [email]
+    );
     return data;
   } catch (err) {
     console.error("Error while finding admin by email:", err);
@@ -60,9 +66,10 @@ export const findEmployeeByIdNumber = async (id_number_to_string) => {
   const connection = await getDb();
 
   try {
-    const [data] = await connection.query("SELECT * FROM employee WHERE id_number = ?", [
-      id_number_to_string,
-    ]);
+    const [data] = await connection.query(
+      "SELECT * FROM employee WHERE id_number = ?",
+      [id_number_to_string]
+    );
     return data;
   } catch (err) {
     console.error("Error while finding employee by id number:", err);

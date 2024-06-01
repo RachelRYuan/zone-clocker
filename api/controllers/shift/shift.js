@@ -64,8 +64,14 @@ export const updateShift = async (req, res) => {
     console.log(employeeInfo);
 
     // Extract zone details from the request body
-    const { start_time, end_time, check_in, check_out, check_in_date, check_out_date } =
-      req.body;
+    const {
+      start_time,
+      end_time,
+      check_in,
+      check_out,
+      check_in_date,
+      check_out_date,
+    } = req.body;
 
     // Reset and check_out on employee role
     if (check_out && check_out_date && check_in) {
