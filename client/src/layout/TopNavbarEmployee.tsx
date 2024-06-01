@@ -18,7 +18,9 @@ const TopNavbarEmployee = () => {
         }}
         className="flex justify-between items-center py-3 px-8"
       >
-        <h1 className="text-3xl font-bold text-orange-600 block sm:hidden">ZC</h1>
+        <h1 className="text-3xl font-bold text-orange-600 block sm:hidden">
+          ZC
+        </h1>
         <h1 className="text-3xl font-bold text-orange-600 hidden sm:block">
           Zone Clocker
         </h1>

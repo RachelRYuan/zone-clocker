@@ -88,7 +88,11 @@ const LeftNavbarEmployee = () => {
                 onClick={() => handleMenuClick(menu)}
               >
                 <div>{<menu.icon size="20" />}</div>
-                <h2 className={`duration-500 ${!open && "opacity-0 overflow-hidden"}`}>
+                <h2
+                  className={`duration-500 ${
+                    !open && "opacity-0 overflow-hidden"
+                  }`}
+                >
                   {menu.name}
                 </h2>
               </Link>
@@ -98,7 +102,11 @@ const LeftNavbarEmployee = () => {
                 onClick={() => handleMenuClick(menu)}
               >
                 <div>{<menu.icon size="20" />}</div>
-                <h2 className={`duration-500 ${!open && "opacity-0 overflow-hidden"}`}>
+                <h2
+                  className={`duration-500 ${
+                    !open && "opacity-0 overflow-hidden"
+                  }`}
+                >
                   {menu.name}
                 </h2>
               </div>

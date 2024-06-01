@@ -46,7 +46,11 @@ const LeftNavbar = () => {
   ];
 
   const subMenu: Menu[] = [
-    { name: "List of Employees", link: "/list-of-employees", icon: MdOutlineDashboard },
+    {
+      name: "List of Employees",
+      link: "/list-of-employees",
+      icon: MdOutlineDashboard,
+    },
     { name: "Add Employee", link: "/add-employee", icon: AiOutlineUser },
     { name: "Add Shift", link: "/add-shift", icon: FiMessageSquare },
     { name: "Zones", link: "/add-new-zone", icon: TbReportAnalytics },
@@ -132,7 +136,11 @@ const LeftNavbar = () => {
                 onClick={() => handleMenuClick(menu)}
               >
                 <div>{<menu.icon size="20" />}</div>
-                <h2 className={`duration-500 ${!open && "opacity-0 overflow-hidden"}`}>
+                <h2
+                  className={`duration-500 ${
+                    !open && "opacity-0 overflow-hidden"
+                  }`}
+                >
                   {menu.name}
                 </h2>
                 {menu.name === "Employees" && open && (
@@ -155,7 +163,11 @@ const LeftNavbar = () => {
                 onClick={() => handleMenuClick(menu)}
               >
                 <div>{<menu.icon size="20" />}</div>
-                <h2 className={`duration-500 ${!open && "opacity-0 overflow-hidden"}`}>
+                <h2
+                  className={`duration-500 ${
+                    !open && "opacity-0 overflow-hidden"
+                  }`}
+                >
                   {menu.name}
                 </h2>
                 {menu.name === "Employees" && open && (
