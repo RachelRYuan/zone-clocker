@@ -12,7 +12,11 @@ const router = express.Router();
 
 router.post("/create-account", registerAdminAndCompany);
 router.post("/login", login);
-router.get("/validate-jwt-on-refresh-page", validateJWT, validateJWTAndSendUserInfo);
+router.get(
+  "/validate-jwt-on-refresh-page",
+  validateJWT,
+  validateJWTAndSendUserInfo
+);
 router.post("/logout", logout);
 router.post("/login-employee", loginEmployee);
 
