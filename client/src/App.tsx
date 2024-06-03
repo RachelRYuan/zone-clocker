@@ -14,10 +14,12 @@ import { CreateAccount } from "./pages/auth/CreateAccount";
 import AuthProvider, { AuthContext } from "./context/AuthContext";
 import EmployeePage from "./pages/employeePage/EmployeePage";
 
-const ProtectedRoute: React.FC<{ children: ReactNode; allowedRoles: string[] }> = ({
-  children,
-  allowedRoles,
-}) => {
+interface ProtectedRouteProps {
+  children: ReactNode;
+  allowedRoles: string[];
+}
+
+const ProtectedRoute: FC<ProtectedRouteProps> = ({ children, allowedRoles }) => {
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -30,11 +32,10 @@ const ProtectedRoute: React.FC<{ children: ReactNode; allowedRoles: string[] }> 
     return <div>Loading...</div>;
   }
 
-  // we check if the user is logged in and if the user role is allowed in all
-  // the protected routes and "first match wins", It does not stop evaluating of fail conditions
   if (currentUser && allowedRoles.includes(userRole)) {
     return <>{children}</>;
   }
+
   return <Navigate to="/login" />;
 };
 

@@ -1,4 +1,7 @@
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
 import { TbReload } from "react-icons/tb";
 
 interface Props {
@@ -32,7 +35,9 @@ const Pagination: React.FC<Props> = ({
         </button>
         <div className="flex flex-col items-center justify-center sm:flex-row gap-1">
           <p className="text-xs font-semibold">Week</p>
-          <p className="text-xs font-semibold">{getWeekNumber(previousWeekDate)}</p>
+          <p className="text-xs font-semibold">
+            {getWeekNumber(previousWeekDate)}
+          </p>
         </div>
       </div>
       {/* Current week: example week 46 */}
@@ -45,7 +50,9 @@ const Pagination: React.FC<Props> = ({
         </button>
         <div className="flex flex-col items-center justify-center text-center sm:flex-row gap-1">
           <p className="text-xs font-semibold">Current Week</p>
-          <p className="text-xs font-semibold">{getWeekNumber(realCurrentDate)}</p>
+          <p className="text-xs font-semibold">
+            {getWeekNumber(realCurrentDate)}
+          </p>
         </div>
       </div>
       {/* Next week: example week 47 */}
