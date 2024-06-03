@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MainTitleAndButtonAction from "../../../sharedComponents/MainTitleAndButtonAction";
 import SearchEmployeeInput from "./SearchEmployeeInput";
 import TableHeader from "./TableHeader";
 import TableBodyRow from "./TableBodyRow";
-import { useEffect } from "react";
+import ModalDeleteEmployee from "./ModalDeleteEmployee";
 import { fetchEmployees } from "../../../slices/employees/employeeSlice";
 import { AppDispatch, RootState } from "../../../store/store";
-import { useDispatch, useSelector } from "react-redux";
-import ModalDeleteEmployee from "./ModalDeleteEmployee";
 
 interface Employee {
   name: string;
@@ -23,15 +22,14 @@ interface Employee {
 
 export default function ListOfEmployees() {
   const [searchEmployee, setSearchEmployee] = useState<string>("");
-  const { isVisible } = useSelector((state: RootState) => state.employee);
-
+  const { isVisible, employeeList } = useSelector(
+    (state: RootState) => state.employee
+  );
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchEmployees());
   }, [dispatch]);
-
-  const { employeeList } = useSelector((state: RootState) => state.employee);
 
   const filteredEmployeeList = employeeList.filter((employee) =>
     employee.name.toLowerCase().includes(searchEmployee.toLowerCase())
@@ -57,7 +55,7 @@ export default function ListOfEmployees() {
           Total employees: {employeeList.length}
         </h2>
         <hr className="h-px sm:my-2 my-0 bg-gray-200 border-0" />
-        <div className="overflow-x-auto ">
+        <div className="overflow-x-auto">
           <div className="inline-block min-w-full py-2 align-middle">
             <table className="min-w-full divide-y divide-gray-200">
               <TableHeader />

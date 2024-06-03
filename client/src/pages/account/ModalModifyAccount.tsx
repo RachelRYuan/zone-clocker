@@ -10,7 +10,10 @@ export const ModalModifyAccount: React.FC = () => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         dispatch(toggleEditModal());
         dispatch(resetState());
       }
@@ -21,8 +24,12 @@ export const ModalModifyAccount: React.FC = () => {
     };
   }, [modalRef, dispatch]);
 
-  const { nameError, localEditFormInputs, handleInputChangeEdit, submitEditAdmin } =
-    useAccount();
+  const {
+    nameError,
+    localEditFormInputs,
+    handleInputChangeEdit,
+    submitEditAdmin,
+  } = useAccount();
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen max-h-ful">
@@ -95,7 +102,9 @@ export const ModalModifyAccount: React.FC = () => {
                 />
               </div>
               {nameError && (
-                <p className="text-xs text-right text-red-500 my-1">{nameError}</p>
+                <p className="text-xs text-right text-red-500 my-1">
+                  {nameError}
+                </p>
               )}
               <div className="mb-2 flex flex-col items-start">
                 <label

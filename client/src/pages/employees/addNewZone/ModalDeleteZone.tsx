@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal, toggleModalDelete } from "../../../slices/zones/modalSlice";
+import {
+  toggleModal,
+  toggleModalDelete,
+} from "../../../slices/zones/modalSlice";
 import { useClickOutside } from "../../../sharedCustomHooks/useClickOutside";
 import { useAddZone } from "./utilsAddNewZone";
 import { AppDispatch, RootState } from "../../../store/store";

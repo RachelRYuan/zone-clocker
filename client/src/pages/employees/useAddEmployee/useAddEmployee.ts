@@ -1,6 +1,9 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetState, setFormInputs } from "../../../slices/employees/employeeSlice";
+import {
+  resetState,
+  setFormInputs,
+} from "../../../slices/employees/employeeSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { toggleModal } from "../../../slices/zones/modalSlice";
 import { toast } from "react-toastify";
@@ -12,7 +15,9 @@ export const useEmployee = () => {
 
   const [nameError, setNameError] = useState<string | null>(null);
   const [idNumberError, setIdNumberError] = useState<string | null>(null);
-  const [mobileNumberError, setMobileNumberError] = useState<string | null>(null);
+  const [mobileNumberError, setMobileNumberError] = useState<string | null>(
+    null
+  );
 
   const employeeNotification = (message: string) => {
     toast(message);
@@ -84,8 +89,13 @@ export const useEmployee = () => {
     const selectedPlaceOfWork = e.target.value;
     let id_zone: number | null;
 
-    if (selectedPlaceOfWork !== "AddNewZone" && selectedPlaceOfWork !== "None") {
-      const selectedZone = zoneList.find((zone) => zone.name === selectedPlaceOfWork);
+    if (
+      selectedPlaceOfWork !== "AddNewZone" &&
+      selectedPlaceOfWork !== "None"
+    ) {
+      const selectedZone = zoneList.find(
+        (zone) => zone.name === selectedPlaceOfWork
+      );
       if (selectedZone) {
         id_zone = selectedZone.id_zone;
       }

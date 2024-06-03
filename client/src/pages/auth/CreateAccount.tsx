@@ -129,7 +129,9 @@ export function CreateAccount() {
 
           <div className="flex items-end justify-end">
             <Link to="/login">
-              <p className="text-blue-900 underline cursor-pointer">Login instead</p>
+              <p className="text-blue-900 underline cursor-pointer">
+                Login instead
+              </p>
             </Link>
           </div>
         </form>

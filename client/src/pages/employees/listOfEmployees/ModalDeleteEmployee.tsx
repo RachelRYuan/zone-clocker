@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useClickOutside } from "../../../sharedCustomHooks/useClickOutside";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useEmployee } from "../useAddEmployee/useAddEmployee";
-import { resetState, toggleModal } from "../../../slices/employees/employeeSlice";
+import {
+  resetState,
+  toggleModal,
+} from "../../../slices/employees/employeeSlice";
 
 const ModalDeleteEmployee: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

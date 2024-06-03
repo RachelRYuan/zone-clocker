@@ -29,32 +29,27 @@ const MapComponent: React.FC<MapComponentProps> = ({
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    // Handler for click event
     const onMapClick = (e: L.LeafletMouseEvent) => {
       const { lat, lng } = e.latlng;
       setSelectedCoordinates({ lat, lng });
 
-      // Remove existing circle
       if (circle) {
         map.removeLayer(circle);
       }
 
-      // Draw new circle
       circle = L.circle([lat, lng], {
         color: "red",
         fillColor: "#f03",
         fillOpacity: 0.5,
-        radius: radius ? radius : 200,
+        radius: radius || 200,
       }).addTo(map);
     };
 
-    // Register click event
     map.on("click", onMapClick);
 
-    // Cleanup map when unmounted
     return () => {
-      map.off("click", onMapClick); // Remove click event listener
-      map.remove(); // Remove map
+      map.off("click", onMapClick);
+      map.remove();
     };
   }, [radius, setSelectedCoordinates]);
 

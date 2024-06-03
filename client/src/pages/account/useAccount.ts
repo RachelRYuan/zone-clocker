@@ -39,13 +39,14 @@ export const useAccount = () => {
   });
 
   // Local state for form inputs in Edit admin account
-  const [localEditFormInputs, setLocalEditFormInputs] = useState<localEditFormInputs>({
-    name: "",
-    email: "",
-    password: "",
-    id_admin: 0,
-    id_company: 0,
-  });
+  const [localEditFormInputs, setLocalEditFormInputs] =
+    useState<localEditFormInputs>({
+      name: "",
+      email: "",
+      password: "",
+      id_admin: 0,
+      id_company: 0,
+    });
 
   // Validation function
   const validateNameLength = (name: string) => {

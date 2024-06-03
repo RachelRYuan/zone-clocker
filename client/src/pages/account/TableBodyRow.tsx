@@ -1,5 +1,8 @@
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { setFormInputs, toggleEditModal } from "../../slices/account/accountSlice";
+import {
+  setFormInputs,
+  toggleEditModal,
+} from "../../slices/account/accountSlice";
 import { AppDispatch } from "../../store/store";
 import { useDispatch } from "react-redux";
 

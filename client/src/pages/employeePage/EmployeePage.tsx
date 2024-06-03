@@ -10,7 +10,9 @@ import Table from "../employees/addShift/Table";
 import { ModalOutOfZone } from "../employees/addShift/ModalOutOfZone";
 
 const EmployeePage: React.FC = () => {
-  const { isPaginationModalVisible } = useSelector((state: RootState) => state.shift);
+  const { isPaginationModalVisible } = useSelector(
+    (state: RootState) => state.shift
+  );
 
   const { employeeList } = useSelector((state: RootState) => state.employee);
 

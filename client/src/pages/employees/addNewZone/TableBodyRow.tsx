@@ -1,8 +1,14 @@
-import { toggleModal, toggleModalDelete } from "../../../slices/zones/modalSlice";
+import {
+  toggleModal,
+  toggleModalDelete,
+} from "../../../slices/zones/modalSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { MdDeleteForever, MdOutlineModeEditOutline } from "react-icons/md";
-import { setFormInputs, setSelectedCoordinates } from "../../../slices/zones/zonesSlice";
+import {
+  setFormInputs,
+  setSelectedCoordinates,
+} from "../../../slices/zones/zonesSlice";
 
 interface ZoneData {
   id_company: number;

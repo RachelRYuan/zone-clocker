@@ -50,7 +50,9 @@ export default function TableHeader() {
             required
             maxLength={25}
           />
-          {nameError && <p className="text-xs text-red-500 mt-1">{nameError}</p>}
+          {nameError && (
+            <p className="text-xs text-red-500 mt-1">{nameError}</p>
+          )}
         </div>
       </div>
       <div className="flex sm:flex-row flex-col items-start">
@@ -76,7 +78,9 @@ export default function TableHeader() {
           ))}
         </select>
       </div>
-      <p className="text-xs text-right py-3">Click on the map to add the radius area</p>
+      <p className="text-xs text-right py-3">
+        Click on the map to add the radius area
+      </p>
       <MapComponent />
       {/* Modal footer */}
       <div className="flex items-center justify-end pt-4 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

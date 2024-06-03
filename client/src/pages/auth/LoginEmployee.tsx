@@ -6,10 +6,9 @@ export function LoginEmployee() {
   const [formData, setFormData] = useState<{ id_number: number | "" }>({
     id_number: "",
   });
-  const navigate = useNavigate();
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -17,10 +16,6 @@ export function LoginEmployee() {
   }
 
   const { login } = authContext;
-
-  if (!authContext) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,23 +26,23 @@ export function LoginEmployee() {
     e.preventDefault();
     if (formData.id_number === "") {
       setErrorMessage("Please enter your ID");
-    } else {
-      setErrorMessage(null);
+      return;
     }
+    setErrorMessage(null);
 
     try {
       await login(formData);
       navigate("/employee/home");
     } catch (error) {
       console.log(error);
+      setErrorMessage("Failed to login. Please try again.");
     }
   };
 
   return (
     <div className="relative flex items-center justify-center w-full h-screen">
       <div className="absolute top-[20%] px-5 py-8 bg-white max-w-[500px] w-[90%] border shadow-xl rounded">
-        {/* Title */}
-        <h1 className="pb-4 text-3xl text-center font-bold text-orange-600 block">
+        <h1 className="pb-4 text-3xl text-center font-bold text-orange-600">
           Zone Clocker Employee
         </h1>
         <form onSubmit={handleSubmit} className="p-2">
@@ -64,7 +59,7 @@ export function LoginEmployee() {
               name="id_number"
               value={formData.id_number}
               onChange={handleChange}
-              className="mt-1 py-3 px-2 border rounded-md text-xs w-[100%] focus:outline-none"
+              className="mt-1 py-3 px-2 border rounded-md text-xs w-full focus:outline-none"
             />
           </div>
           <button

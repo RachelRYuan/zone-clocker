@@ -29,7 +29,11 @@ export const usePagination = () => {
     const scheduleUpdate = () => {
       const now = new Date();
       // Create a new Date object representing the next midnight
-      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      const midnight = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1
+      );
       // Calculate the time in milliseconds until midnight
       const timeToMidnight = midnight.getTime() - now.getTime();
 
@@ -62,7 +66,9 @@ export const usePagination = () => {
     const twelveWeeksAhead = new Date(realCurrentDate);
     // this is the object is 84 days (12 weeks) ahead of the todays date
     // this will always be 84 days ahead of the todays date
-    twelveWeeksAhead.setDate(twelveWeeksAhead.getDate() + WEEKS_IN_PERIOD * DAYS_IN_WEEK);
+    twelveWeeksAhead.setDate(
+      twelveWeeksAhead.getDate() + WEEKS_IN_PERIOD * DAYS_IN_WEEK
+    );
 
     // when comparing to date objects we need to use >= or <= so javascript can convert
     // them into milliseconds and compare

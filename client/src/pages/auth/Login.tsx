@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 export function Login() {
-  const [formData, setFormData] = useState<{ email: string; password: string }>({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState<{ email: string; password: string }>(
+    {
+      email: "",
+      password: "",
+    }
+  );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -88,7 +90,9 @@ export function Login() {
 
           <div className="flex items-end justify-end">
             <Link to="/create-account">
-              <p className="text-blue-900 underline cursor-pointer">Create an account</p>
+              <p className="text-blue-900 underline cursor-pointer">
+                Create an account
+              </p>
             </Link>
           </div>
         </form>

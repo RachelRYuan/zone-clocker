@@ -16,7 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 export default function AddNewZone() {
   const dispatch: AppDispatch = useDispatch();
   const { zoneList } = useSelector((state: RootState) => state.zones);
-  const { isVisible, isVisibleDelete } = useSelector((state: RootState) => state.modal);
+  const { isVisible, isVisibleDelete } = useSelector(
+    (state: RootState) => state.modal
+  );
 
   // Fetch zones from database and set them in the store
   useEffect(() => {

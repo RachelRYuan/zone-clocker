@@ -15,7 +15,8 @@ const Home: React.FC = () => {
             <h2 className="font-medium text-2xl">Step 1</h2>
             <BsFillPersonPlusFill size={66} />
             <p className="text-sm text-center">
-              Add the ID number and name of the employee so they start to use the app.
+              Add the ID number and name of the employee so they start to use
+              the app.
             </p>
             <Link
               to="/add-employee"
@@ -28,7 +29,8 @@ const Home: React.FC = () => {
             <h2 className="font-medium text-2xl">Step 2</h2>
             <FaMap size={66} />
             <p className="text-sm text-center">
-              Specify the work location to ensure smooth check-ins and check-outs.
+              Specify the work location to ensure smooth check-ins and
+              check-outs.
             </p>
             <Link
               to="/add-new-zone"

@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useEffect } from "react";
 import { fetchZones } from "../../../slices/zones/zonesSlice";
-import { resetState, setFormInputs } from "../../../slices/employees/employeeSlice";
+import {
+  resetState,
+  setFormInputs,
+} from "../../../slices/employees/employeeSlice";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -55,7 +58,9 @@ export default function Form({ dropdownOpen, handleMenuClick }: FormProps) {
           maxLength={27}
         />
       </div>
-      {nameError && <p className="text-xs text-right text-red-500 my-1">{nameError}</p>}
+      {nameError && (
+        <p className="text-xs text-right text-red-500 my-1">{nameError}</p>
+      )}
       <div className="mb-2 flex sm:flex-row flex-col items-start">
         <label
           htmlFor="idNumber"
@@ -84,7 +89,9 @@ export default function Form({ dropdownOpen, handleMenuClick }: FormProps) {
           <Switch
             checked={formInputs.is_active}
             onChange={(newIsActive) => {
-              dispatch(setFormInputs({ ...formInputs, is_active: newIsActive }));
+              dispatch(
+                setFormInputs({ ...formInputs, is_active: newIsActive })
+              );
             }}
             className={classNames(
               formInputs.is_active ? "bg-orange-600" : "bg-gray-200",
@@ -132,7 +139,9 @@ export default function Form({ dropdownOpen, handleMenuClick }: FormProps) {
               id="birthday"
               value={formInputs.birthday ?? ""}
               onChange={(e) =>
-                dispatch(setFormInputs({ ...formInputs, birthday: e.target.value }))
+                dispatch(
+                  setFormInputs({ ...formInputs, birthday: e.target.value })
+                )
               }
               className="mt-1 p-2 border rounded-md text-xs w-[100%] focus:outline-none"
             />
@@ -153,7 +162,9 @@ export default function Form({ dropdownOpen, handleMenuClick }: FormProps) {
             />
           </div>
           {mobileNumberError && (
-            <p className="text-xs text-right text-red-500 my-1">{mobileNumberError}</p>
+            <p className="text-xs text-right text-red-500 my-1">
+              {mobileNumberError}
+            </p>
           )}
           <div className="mb-2 flex sm:flex-row flex-col items-start">
             <label
@@ -167,7 +178,9 @@ export default function Form({ dropdownOpen, handleMenuClick }: FormProps) {
               id="email"
               value={formInputs.email ?? ""}
               onChange={(e) =>
-                dispatch(setFormInputs({ ...formInputs, email: e.target.value }))
+                dispatch(
+                  setFormInputs({ ...formInputs, email: e.target.value })
+                )
               }
               className="mt-1 p-2 border rounded-md text-xs w-[100%] focus:outline-none"
             />

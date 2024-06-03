@@ -9,7 +9,9 @@ import { RootState } from "../../../store/store";
 
 const MapComponent: React.FC = () => {
   // Used when editing a zone to pre-fill form with zone data
-  const { selectedCoordinates, radius } = useSelector((state: RootState) => state.zones);
+  const { selectedCoordinates, radius } = useSelector(
+    (state: RootState) => state.zones
+  );
   const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
     // Check if the map is already initialized
@@ -24,7 +26,10 @@ const MapComponent: React.FC = () => {
 
     // Editing mode shows the red circle on the map when the modal is opened
     if (selectedCoordinates?.lat && selectedCoordinates?.lng) {
-      map = L.map("map").setView([selectedCoordinates.lat, selectedCoordinates.lng], 13);
+      map = L.map("map").setView(
+        [selectedCoordinates.lat, selectedCoordinates.lng],
+        13
+      );
       // Remove existing circle
       if (circle) {
         map.removeLayer(circle);

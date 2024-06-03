@@ -12,11 +12,12 @@ export const useShiftEmployee = () => {
 
   const { currentUser } = useAuth();
 
-  const [activeShiftForModal, setActiveShiftForModal] = useState<number | null>(null);
+  const [activeShiftForModal, setActiveShiftForModal] = useState<number | null>(
+    null
+  );
   // New state for tracking active shift for check-out modal
-  const [activeShiftForCheckOutModal, setActiveShiftForCheckOutModal] = useState<
-    number | null
-  >(null);
+  const [activeShiftForCheckOutModal, setActiveShiftForCheckOutModal] =
+    useState<number | null>(null);
 
   // Function to open check-out modal for a specific shift
   const openCheckOutModalForShift = (id_shift: number) => {
@@ -53,7 +54,12 @@ export const useShiftEmployee = () => {
   };
 
   // Function to calculate the distance between two points
-  function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+  function calculateDistance(
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ) {
     // Haversine formula
     const R = 6371; // Radius of the earth in km
     const dLat = deg2rad(lat2 - lat1);
@@ -90,7 +96,9 @@ export const useShiftEmployee = () => {
         return;
       }
 
-      const res = await makeRequest.get(`zone/get-zone/${currentUser?.id_zone}`);
+      const res = await makeRequest.get(
+        `zone/get-zone/${currentUser?.id_zone}`
+      );
       const zone = res.data;
 
       navigator.geolocation.getCurrentPosition(
@@ -140,7 +148,9 @@ export const useShiftEmployee = () => {
         dispatch(fetchShifts());
         return;
       }
-      const res = await makeRequest.get(`zone/get-zone/${currentUser?.id_zone}`);
+      const res = await makeRequest.get(
+        `zone/get-zone/${currentUser?.id_zone}`
+      );
       const zone = res.data;
 
       navigator.geolocation.getCurrentPosition(
