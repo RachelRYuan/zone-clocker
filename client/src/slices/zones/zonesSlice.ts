@@ -67,7 +67,7 @@ const zoneSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchZones.fulfilled, (state, action) => {
-      // Updated zoneList 
+      // Updated zoneList
       state.zoneList = action.payload;
     });
   },

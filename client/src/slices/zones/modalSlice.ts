@@ -29,5 +29,6 @@ const modalSlice = createSlice({
   },
 });
 
-export const { toggleModal, toggleModalDelete, resetIdZoneToDelete } = modalSlice.actions;
+export const { toggleModal, toggleModalDelete, resetIdZoneToDelete } =
+  modalSlice.actions;
 export default modalSlice.reducer;

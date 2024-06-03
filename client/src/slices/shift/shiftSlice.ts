@@ -92,7 +92,8 @@ const shiftSlice = createSlice({
       state.check_in = action.payload.check_in ?? state.check_in;
       state.check_out = action.payload.check_out ?? state.check_out;
       state.check_in_date = action.payload.check_in_date ?? state.check_in_date;
-      state.check_out_date = action.payload.check_out_date ?? state.check_out_date;
+      state.check_out_date =
+        action.payload.check_out_date ?? state.check_out_date;
     },
     resetStateShift: (state) => {
       state.id_shift = initialState.id_shift;

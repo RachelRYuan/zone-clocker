@@ -31,11 +31,14 @@ const initialState: AccountState = {
   isVisibleEditAccount: false,
 };
 
-export const fetchAccounts = createAsyncThunk("addEmployee/fetchAccounts", async () => {
-  const response = await makeRequest.get("/account/get-accounts");
+export const fetchAccounts = createAsyncThunk(
+  "addEmployee/fetchAccounts",
+  async () => {
+    const response = await makeRequest.get("/account/get-accounts");
 
-  return response.data;
-});
+    return response.data;
+  }
+);
 
 const accountSlice = createSlice({
   name: "account",
@@ -73,6 +76,11 @@ const accountSlice = createSlice({
   },
 });
 
-export const { setFormInputs, resetState, setAccountList, toggleModal, toggleEditModal } =
-  accountSlice.actions;
+export const {
+  setFormInputs,
+  resetState,
+  setAccountList,
+  toggleModal,
+  toggleEditModal,
+} = accountSlice.actions;
 export default accountSlice.reducer;

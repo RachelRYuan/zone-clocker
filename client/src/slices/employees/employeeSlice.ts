@@ -41,10 +41,13 @@ const initialState: EmployeeState = {
   isVisible: false,
 };
 
-export const fetchEmployees = createAsyncThunk("addEmployee/fetchEmployees", async () => {
-  const response = await makeRequest.get("/employee/get-employees");
-  return response.data;
-});
+export const fetchEmployees = createAsyncThunk(
+  "addEmployee/fetchEmployees",
+  async () => {
+    const response = await makeRequest.get("/employee/get-employees");
+    return response.data;
+  }
+);
 
 // Define a utility function to format the birthday
 const formatBirthday = (isoDateString?: string | null): string => {
@@ -63,7 +66,8 @@ const employeeSlice = createSlice({
     },
     setFormInputs: (state, action: PayloadAction<Partial<Employee>>) => {
       state.name = action.payload.name ?? state.name;
-      state.birthday = formatBirthday(action.payload.birthday) ?? state.birthday;
+      state.birthday =
+        formatBirthday(action.payload.birthday) ?? state.birthday;
       state.email = action.payload.email ?? state.email;
       state.id_number = action.payload.id_number ?? state.id_number;
       state.is_active = action.payload.is_active ?? state.is_active;
